@@ -1,0 +1,1543 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yard Visit — State Service | Ingleside, TX</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:    #0D1F3C;
+  --navy2:   #152944;
+  --navy3:   #1B3A6B;
+  --gold:    #f6c702;
+  --gold2:   #ffda33;
+  --steel:   #8FA3B8;
+  --steel2:  #C2D0DC;
+  --white:   #F4F6F8;
+  --offwhite:#E8ECF0;
+  --text:    #D8E2EC;
+  --muted:   #7A90A4;
+  --border:  rgba(140,165,190,0.18);
+  --rust:    #B84A1A;
+  --navy-dark: #0B1A33;
+}
+
+html { scroll-behavior: smooth; }
+
+.container {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0 48px;
+  width: 100%;
+}
+
+body {
+  font-family: 'Barlow', sans-serif;
+  background: var(--navy-dark);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* ── NOISE TEXTURE OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 18px 0;
+  background: rgba(13,31,60,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+nav .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo-img {
+  height: 24px;
+  width: auto;
+  display: block;
+}
+.nav-cta {
+  background: var(--gold);
+  color: var(--navy);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 10px 24px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.nav-cta:hover { background: var(--gold2); }
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 120px 0 80px;
+  overflow: hidden;
+}
+
+/* industrial grid background */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  z-index: 0;
+}
+
+/* dark gradient overlay bottom */
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 40%;
+  background: linear-gradient(transparent, var(--navy));
+  z-index: 1;
+}
+
+/* ── HERO SLIDER ── */
+.hero-slider {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  background: var(--navy);
+}
+.hero-slider::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(13,31,60,0.8) 0%, rgba(13,31,60,0) 50%);
+  z-index: 5;
+}
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transform: scale(1);
+  transition: opacity 3.5s ease-in-out, transform 15s linear;
+}
+.hero-slide.active {
+  opacity: 0.55; /* Darkened for text readability */
+  transform: scale(1.08);
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  max-width: 860px;
+}
+
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+.hero-eyebrow-line {
+  width: 40px;
+  height: 2px;
+  background: var(--gold);
+}
+.hero-eyebrow-text {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.hero h1 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(52px, 8vw, 96px);
+  font-weight: 800;
+  line-height: 0.92;
+  text-transform: uppercase;
+  color: var(--white);
+  margin-bottom: 32px;
+  letter-spacing: -0.01em;
+}
+.hero h1 em {
+  font-style: normal;
+  color: var(--gold);
+  display: block;
+}
+
+.hero-desc {
+  font-size: 18px;
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1.65;
+  max-width: 560px;
+  margin-bottom: 48px;
+}
+
+.hero-meta {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+.hero-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.hero-meta-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.hero-meta-value {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--white);
+  letter-spacing: 0.02em;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: var(--gold);
+  color: var(--navy);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 16px 36px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-primary:hover { background: var(--gold2); transform: translateY(-1px); }
+
+.btn-secondary {
+  color: var(--steel2);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 2px;
+  transition: color 0.2s;
+}
+.btn-secondary:hover { color: var(--gold); border-color: var(--gold); }
+
+/* scroll indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 32px;
+  right: 48px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 0.5;
+}
+.scroll-line {
+  width: 1px;
+  height: 48px;
+  background: var(--gold);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%,100% { opacity: 0.3; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(0.6); }
+}
+.scroll-text {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--white);
+  writing-mode: vertical-rl;
+}
+
+/* ── STATS BAND ── */
+.stats-band {
+  position: relative;
+  z-index: 2;
+  background: var(--navy2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 48px 0;
+}
+.stats-band .container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+.stat-item {
+  padding: 0 40px;
+  border-right: 1px solid var(--border);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.stat-item:first-child { padding-left: 0; }
+.stat-item:last-child { border-right: none; }
+.stat-item.visible { opacity: 1; transform: translateY(0); }
+.stat-number {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 52px;
+  font-weight: 800;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.stat-label {
+  font-size: 13px;
+  color: var(--white);
+  line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 500;
+}
+
+/* ── SECTION ── */
+section {
+  position: relative;
+  z-index: 2;
+  padding: 96px 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.section-eyebrow-line {
+  width: 28px;
+  height: 2px;
+  background: var(--gold);
+}
+.section-eyebrow-text {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.section-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--white);
+  line-height: 1.05;
+  margin-bottom: 20px;
+}
+
+.section-body {
+  font-size: 16px;
+  font-weight: 300;
+  color: var(--steel2);
+  line-height: 1.7;
+  max-width: 600px;
+}
+
+/* ── VIDEO PLACEHOLDER ── */
+.video-section {
+  padding: 0 48px 0;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+.video-section .section-eyebrow {
+  max-width: 860px;
+  margin: 0 auto;
+}
+.video-frame {
+  position: relative;
+  background: var(--navy2);
+  border: 1px solid var(--border);
+  aspect-ratio: 16/9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+.video-frame::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg, rgba(201,168,76,0.06) 0%, transparent 50%),
+    linear-gradient(225deg, rgba(13,31,60,0.8) 0%, transparent 60%);
+}
+/* industrial diagonal stripe accent */
+.video-frame::after {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 80px 80px 0;
+  border-color: transparent var(--gold) transparent transparent;
+  opacity: 0.3;
+}
+.video-play {
+  position: relative;
+  z-index: 1;
+  width: 80px;
+  height: 80px;
+  border: 2px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.video-frame:hover .video-play { background: var(--gold); }
+.video-play svg { width: 28px; height: 28px; fill: var(--gold); transition: fill 0.2s; margin-left: 4px; }
+.video-frame:hover .video-play svg { fill: var(--navy); }
+.video-label {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--steel2);
+  z-index: 1;
+}
+
+/* ── WHAT TO EXPECT ── */
+.expect-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+  margin-top: 56px;
+}
+.expect-items {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.expect-item {
+  display: flex;
+  gap: 20px;
+  opacity: 0;
+  transform: translateX(-16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.expect-item.visible { opacity: 1; transform: translateX(0); }
+.expect-icon {
+  flex-shrink: 0;
+  min-width: 48px;
+  display: flex;
+  justify-content: flex-start;
+  padding-top: 2px;
+}
+.expect-content h4 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--white);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+.expect-content p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+/* bus tour card */
+.bus-card {
+  background: var(--navy2);
+  border: 1px solid var(--border);
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
+}
+.bus-card:hover {
+  border-color: var(--gold);
+  background: rgba(201,168,76,0.06);
+  box-shadow: 0 8px 24px rgba(13,31,60,0.4);
+}
+.bus-card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--gold);
+}
+.bus-card-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 20px;
+}
+.bus-route {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+.bus-city {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--white);
+  text-transform: uppercase;
+}
+.bus-arrow {
+  color: var(--gold);
+  font-size: 20px;
+  flex-shrink: 0;
+  opacity: 0;
+  transform: translateX(-10px);
+}
+.bus-card.visible .bus-arrow { animation: arrowSlide 0.5s ease forwards 2.4s; }
+@keyframes arrowSlide { to { opacity: 1; transform: translateX(0); } }
+.bus-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: opacity 0.3s, transform 0.3s;
+}
+.bus-card:hover .bus-details {
+  opacity: 0;
+  transform: translateY(10px);
+}
+.bus-hover-cta {
+  position: absolute;
+  top: 156px;
+  left: 40px;
+  right: 40px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--gold);
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+}
+.bus-card:hover .bus-hover-cta {
+  opacity: 1;
+  transform: translateY(0);
+}
+.bus-hover-cta svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--gold);
+  stroke-width: 2.5;
+  fill: none;
+  transition: transform 0.3s;
+}
+.bus-card:hover .bus-hover-cta svg {
+  transform: translateX(8px);
+}
+.bus-detail {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--steel2);
+}
+.bus-detail-dot {
+  width: 5px;
+  height: 5px;
+  background: var(--gold);
+  flex-shrink: 0;
+  opacity: 0;
+}
+.bus-detail span { opacity: 0; }
+
+@keyframes ledTick { to { opacity: 1; } }
+
+.bus-card.visible .bus-detail:nth-child(1) .bus-detail-dot { animation: ledTick 0.01s forwards 0.2s; }
+.bus-card.visible .bus-detail:nth-child(1) span { animation: ledTick 0.01s forwards 0.3s; }
+.bus-card.visible .bus-detail:nth-child(2) .bus-detail-dot { animation: ledTick 0.01s forwards 0.5s; }
+.bus-card.visible .bus-detail:nth-child(2) span { animation: ledTick 0.01s forwards 0.6s; }
+.bus-card.visible .bus-detail:nth-child(3) .bus-detail-dot { animation: ledTick 0.01s forwards 0.8s; }
+.bus-card.visible .bus-detail:nth-child(3) span { animation: ledTick 0.01s forwards 0.9s; }
+.bus-card.visible .bus-detail:nth-child(4) .bus-detail-dot { animation: ledTick 0.01s forwards 1.1s; }
+.bus-card.visible .bus-detail:nth-child(4) span { animation: ledTick 0.01s forwards 1.2s; }
+.bus-card.visible .bus-detail:nth-child(5) .bus-detail-dot { animation: ledTick 0.01s forwards 1.4s; }
+.bus-card.visible .bus-detail:nth-child(5) span { animation: ledTick 0.01s forwards 1.5s; }
+.bus-card.visible .bus-detail:nth-child(6) .bus-detail-dot { animation: ledTick 0.01s forwards 1.7s; }
+.bus-card.visible .bus-detail:nth-child(6) span { animation: ledTick 0.01s forwards 1.8s; }
+
+/* ── DATES ── */
+.dates-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 48px;
+}
+.date-card {
+  background: var(--navy2);
+  border: 1px solid var(--border);
+  padding: 28px 24px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s, box-shadow 0.2s;
+  position: relative;
+}
+.date-card:hover,
+.date-card.simulated-hover { 
+  border-color: var(--gold); 
+  background: rgba(201,168,76,0.04); 
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(13,31,60,0.4);
+}
+.date-card.selected { border-color: var(--gold); background: rgba(201,168,76,0.08); }
+.date-card.selected::after {
+  content: '✓';
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 22px;
+  height: 22px;
+  background: var(--gold);
+  color: var(--navy);
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+.date-badge {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+.date-main {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+.date-note {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ── FORM SECTION ── */
+.form-section {
+  background: var(--navy2);
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+  max-width: 1200px;
+  margin: 0 auto 96px;
+  z-index: 2;
+}
+.form-section::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.form-left {
+  padding: 64px 56px;
+  border-right: 1px solid var(--border);
+}
+.form-right {
+  padding: 64px 56px;
+}
+
+.form-headline {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 40px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+.form-subline {
+  font-size: 15px;
+  color: var(--white);
+  line-height: 1.6;
+  margin-bottom: 36px;
+}
+.form-guarantee {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.form-guarantee-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14px;
+  color: var(--steel2);
+}
+.fg-icon {
+  width: 18px;
+  height: 18px;
+  background: rgba(201,168,76,0.15);
+  border: 1px solid var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.fg-icon svg { width: 10px; height: 10px; stroke: var(--gold); fill: none; }
+
+.field-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.field.full { grid-column: 1 / -1; }
+.field label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.field input,
+.field select,
+.field textarea {
+  background: rgba(13,31,60,0.6);
+  border: 1px solid var(--border);
+  color: var(--white);
+  font-family: 'Barlow', sans-serif;
+  font-size: 14px;
+  padding: 12px 14px;
+  outline: none;
+  transition: border-color 0.5s ease-in-out;
+  appearance: none;
+}
+.field input:focus,
+.field select:focus,
+.field textarea:focus,
+.field input.simulated-focus,
+.field select.simulated-focus,
+.field textarea.simulated-focus { border-color: var(--gold); }
+.field select { cursor: pointer; }
+.field textarea { resize: vertical; min-height: 80px; }
+
+.form-submit {
+  width: 100%;
+  background: var(--gold);
+  color: var(--navy);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 18px;
+  border: none;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: background 0.2s, transform 0.15s;
+}
+.form-submit:hover { background: var(--gold2); transform: translateY(-1px); }
+
+.form-disclaimer {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 12px;
+  line-height: 1.5;
+}
+
+/* ── FOOTER ── */
+.site-footer {
+  position: relative;
+  z-index: 2;
+  background: var(--navy-dark);
+  padding: 150px 48px 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+/* Placeholder for the map background */
+.footer-map-bg {
+  position: absolute;
+  inset: 0;
+  opacity: 0.15;
+  background-image: url('Worl Map.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: 0;
+}
+.footer-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+}
+.footer-logo-placeholder {
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  text-align: center;
+}
+.footer-socials {
+  display: flex;
+  gap: 16px;
+}
+.social-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, background 0.2s;
+  text-decoration: none;
+}
+.social-icon:hover {
+  transform: translateY(-3px);
+  background: var(--offwhite);
+}
+.social-icon svg {
+  width: 18px;
+  height: 18px;
+  fill: var(--navy);
+}
+.social-icon.linkedin svg {
+  width: 16px;
+  height: 16px;
+}
+.footer-bottom {
+  margin-top: 16px;
+}
+.footer-copyright {
+  font-size: 12px;
+  color: var(--white);
+  text-align: center;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+.back-to-top {
+  position: absolute;
+  right: 48px;
+  bottom: 40px;
+  width: 40px;
+  height: 40px;
+  background: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: transform 0.2s;
+  z-index: 2;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.back-to-top:hover {
+  transform: translateY(-3px);
+}
+.back-to-top svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--navy);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+/* ── DIVIDER ── */
+.divider {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 48px;
+  position: relative;
+  z-index: 2;
+}
+.divider-line {
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-inner > * { animation: fadeUp 0.7s ease both; }
+.hero-eyebrow     { animation-delay: 0.1s; }
+.hero h1          { animation-delay: 0.2s; }
+.hero-desc        { animation-delay: 0.3s; }
+.hero-meta        { animation-delay: 0.4s; }
+.hero-actions     { animation-delay: 0.5s; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .container { padding: 0 24px; }
+  nav { padding: 16px 0; }
+  .hero { padding: 100px 0 80px; }
+  .stats-band { padding: 32px 0; }
+  .stats-band .container { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .stat-item { border-right: none; padding: 0; }
+  section { padding: 64px 24px; }
+  .video-section { padding: 0 24px 64px; }
+  .expect-grid { grid-template-columns: 1fr; gap: 40px; }
+  .dates-grid { grid-template-columns: 1fr 1fr; }
+  .form-grid { grid-template-columns: 1fr; }
+  .form-left { border-right: none; border-bottom: 1px solid var(--border); }
+  .form-left, .form-right { padding: 40px 28px; }
+  .site-footer { padding: 64px 24px 40px; }
+  .back-to-top {
+    position: relative;
+    right: auto;
+    bottom: auto;
+    margin-top: 32px;
+  }
+  .divider { padding: 0 24px; }
+}
+
+@keyframes truckBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+@keyframes arrowFloat {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(4px); }
+}
+.bus-icon-truck {
+  animation: truckBlink 3s ease-in-out infinite;
+}
+.bus-icon-arrow {
+  animation: arrowFloat 1.5s ease-in-out infinite;
+}
+
+.bus-card-icon {
+  opacity: 0;
+}
+.bus-card.visible .bus-card-icon {
+  animation: fadeInIcon 1.5s ease forwards 2.5s;
+}
+@keyframes fadeInIcon {
+  to { opacity: 0.8; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <img src="Assets/State-Service-Logo-light.png" alt="State Service" class="nav-logo-img">
+    <a href="#register" class="nav-cta">Register Interest</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-slider" id="heroSlider">
+    <div class="hero-slide active" style="background-image: url('Assets/StateService_YardVisit_2.jpg');"></div>
+    <div class="hero-slide" style="background-image: url('Assets/StateService_YardVisit_1.jpg');"></div>
+    <div class="hero-slide" style="background-image: url('Assets/StateService_YardVisit_3.jpg');"></div>
+    <div class="hero-slide" style="background-image: url('Assets/StateService_YardVisit_4.jpg');"></div>
+    <div class="hero-slide" style="background-image: url('Assets/StateService_YardVisit_5.jpg');"></div>
+    <div class="hero-slide" style="background-image: url('Assets/StateService_YardVisit_6.jpg');"></div>
+    <div class="hero-slide" style="background-image: url('Assets/StateService_YardVisit_7.jpg');"></div>
+    <div class="hero-slide" style="background-image: url('Assets/StateService_YardVisit_8.jpg');"></div>
+    <div class="hero-slide" style="background-image: url('Assets/StateService_YardVisit_9.jpg');"></div>
+    <div class="hero-slide" style="background-image: url('Assets/StateService_YardVisit_10.jpg');"></div>
+    <div class="hero-slide" style="background-image: url('Assets/StateService_YardVisit_11.jpg');"></div>
+  </div>
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-eyebrow">
+        <div class="hero-eyebrow-line"></div>
+        <div class="hero-eyebrow-text">Ingleside, Texas · Gulf Intracoastal Waterway</div>
+      </div>
+    <h1>See the yard.<br><em>In person.</em></h1>
+    <p class="hero-desc">You've heard the numbers. Now walk the yard. State Service is hosting an exclusive facility tour at our modular fabrication yard in Ingleside — including a charter bus from Houston.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Following EPC Show</span>
+        <span class="hero-meta-value">June–July 2026</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Departure</span>
+        <span class="hero-meta-value">Houston, TX</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Group size</span>
+        <span class="hero-meta-value">Limited seats</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="hero-meta-label">Cost</span>
+        <span class="hero-meta-value">Complimentary</span>
+      </div>
+    </div>
+    <div class="hero-actions">
+      <a href="#register" class="btn-primary">Reserve My Spot</a>
+      <a href="#what-to-expect" class="btn-secondary">
+        What to expect
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </div>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    <span class="scroll-text">Scroll</span>
+  </div>
+</div>
+
+<!-- STATS BAND -->
+<div class="stats-band">
+  <div class="container">
+    <div class="stat-item">
+      <div class="stat-number">70</div>
+      <div class="stat-label">Acre waterfront facility</div>
+    </div>
+  <div class="stat-item">
+    <div class="stat-number">2,000</div>
+    <div class="stat-label">Linear feet of load-bearing bulkhead</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">500+</div>
+    <div class="stat-label">Ton lift capacity</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-number">200+</div>
+    <div class="stat-label">Offshore platforms delivered</div>
+  </div>
+  </div>
+</div>
+
+<!-- VIDEO SECTION -->
+<div class="video-section" style="padding-top:96px;">
+  <div class="section-eyebrow">
+    <div class="section-eyebrow-line"></div>
+    <div class="section-eyebrow-text">Yard overview</div>
+  </div>
+  <div class="video-frame" style="max-width:860px; margin: 24px auto 0;">
+    <iframe width="100%" height="100%" src="https://www.youtube.com/embed/CK1se2qJW4o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 10;"></iframe>
+  </div>
+</div>
+
+<!-- WHAT TO EXPECT -->
+<section id="what-to-expect">
+  <div class="section-eyebrow">
+    <div class="section-eyebrow-line"></div>
+    <div class="section-eyebrow-text">Day of visit</div>
+  </div>
+  <h2 class="section-title">What to expect</h2>
+
+  <div class="expect-grid">
+    <div class="expect-items">
+      <div class="expect-item">
+        <div class="expect-icon">
+          <svg width="36" height="24" viewBox="0 0 36 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <g transform="translate(0, 2)">
+              <path d="M8 4v6"/><path d="M14 4v6"/><path d="M2 10h16.6"/><path d="M16 16h2s.4-1.7.6-2.8c.1-.4.2-.8.2-1.2 0-.4-.1-.8-.2-1.2l-1.4-5C17.1 4.8 16.1 4 15 4H4a2 2 0 0 0-2 2v10h3"/><circle cx="6" cy="16" r="2"/><circle cx="14" cy="16" r="2"/>
+            </g>
+            <path d="M24 12h8"/><path d="M28 8l4 4-4 4"/>
+          </svg>
+        </div>
+        <div class="expect-content">
+          <h4>Morning departure from Houston</h4>
+          <p>Charter bus departs from a central Houston location. Approximately 4 hours to Ingleside — time to connect with fellow attendees en route.</p>
+        </div>
+      </div>
+      <div class="expect-item">
+        <div class="expect-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"/><line x1="9" y1="3" x2="9" y2="18"/><line x1="15" y1="6" x2="15" y2="21"/>
+          </svg>
+        </div>
+        <div class="expect-content">
+          <h4>Walking yard tour</h4>
+          <p>Guided tour of the full 70-acre facility led by State Service leadership — fabrication bays, bulkhead access, lift operations, and active project work.</p>
+        </div>
+      </div>
+      <div class="expect-item">
+        <div class="expect-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <div class="expect-content">
+          <h4>Leadership Q&A</h4>
+          <p>Direct conversation with the State Service team on capabilities, project execution approach, and how the yard supports your scope of work.</p>
+        </div>
+      </div>
+      <div class="expect-item">
+        <div class="expect-icon">
+          <svg width="36" height="24" viewBox="0 0 36 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 12H4"/><path d="M8 8l-4 4 4 4"/>
+            <g transform="translate(12, 2)">
+              <path d="M16 4v6"/><path d="M10 4v6"/><path d="M22 10H5.4"/><path d="M8 16H6s-.4-1.7-.6-2.8C5.3 12.8 5.2 12.4 5.2 12c0-.4.1-.8.2-1.2l1.4-5C7.9 4.8 8.9 4 10 4h11a2 2 0 0 1 2 2v10h-3"/><circle cx="18" cy="16" r="2"/><circle cx="10" cy="16" r="2"/>
+            </g>
+          </svg>
+        </div>
+        <div class="expect-content">
+          <h4>Return to Houston same day</h4>
+          <p>Bus departs Ingleside mid-afternoon. Back in Houston by early evening.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bus-card" onclick="window.location.hash='#register'">
+      <svg class="bus-card-icon" style="position: absolute; right: 70px; top: 65px; overflow: visible;" width="72" height="48" viewBox="0 0 36 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <g class="bus-icon-truck" transform="translate(-8, 2)">
+          <path d="M8 4v6"/><path d="M14 4v6"/><path d="M2 10h16.6"/><path d="M16 16h2s.4-1.7.6-2.8c.1-.4.2-.8.2-1.2 0-.4-.1-.8-.2-1.2l-1.4-5C17.1 4.8 16.1 4 15 4H4a2 2 0 0 0-2 2v10h3"/><circle cx="6" cy="16" r="2"/><circle cx="14" cy="16" r="2"/>
+        </g>
+        <g class="bus-icon-arrow">
+          <path d="M24 12h8"/><path d="M28 8l4 4-4 4"/>
+        </g>
+      </svg>
+      <div class="bus-card-title">Charter bus · Allstream</div>
+      <div class="bus-route">
+        <div class="bus-city" data-text="HOUSTON">Houston</div>
+        <div class="bus-arrow">→</div>
+        <div class="bus-city" data-text="INGLESIDE">Ingleside</div>
+      </div>
+      <div class="bus-details">
+        <div class="bus-detail"><div class="bus-detail-dot"></div><span>Complimentary — no cost to attendees</span></div>
+        <div class="bus-detail"><div class="bus-detail-dot"></div><span>Departs Houston AM, returns PM same day</span></div>
+        <div class="bus-detail"><div class="bus-detail-dot"></div><span>~4 hrs each way via US-59 / US-77</span></div>
+        <div class="bus-detail"><div class="bus-detail-dot"></div><span>Limited to 24–30 seats</span></div>
+        <div class="bus-detail"><div class="bus-detail-dot"></div><span>Coordinated by Allstream</span></div>
+        <div class="bus-detail"><div class="bus-detail-dot"></div><span>Full logistics sent 1 week prior</span></div>
+      </div>
+      <div class="bus-hover-cta">
+        Schedule Your Visit <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"><div class="divider-line"></div></div>
+
+<!-- DATE OPTIONS -->
+<section id="dates">
+  <div class="section-eyebrow">
+    <div class="section-eyebrow-line"></div>
+    <div class="section-eyebrow-text">Following the EPC Show · June 16–17, Houston</div>
+  </div>
+  <h2 class="section-title">Select your preferred date</h2>
+  <p class="section-body">Four Friday options following the EPC Show. Indicate your preference in the form below — we'll confirm based on availability.</p>
+
+  <div class="dates-grid">
+    <div class="date-card selected" onclick="selectDate(this)">
+      <div class="date-badge">★ Recommended</div>
+      <div class="date-main">Fri, June 26</div>
+      <div class="date-note">One week post-show. Warm contacts still in project mindset.</div>
+    </div>
+    <div class="date-card" onclick="selectDate(this)">
+      <div class="date-badge">Option</div>
+      <div class="date-main">Fri, July 10</div>
+      <div class="date-note">Three weeks out. Solid buffer for travel coordination.</div>
+    </div>
+    <div class="date-card" onclick="selectDate(this)">
+      <div class="date-badge">Option</div>
+      <div class="date-main">Fri, July 17</div>
+      <div class="date-note">Four weeks out. Latest window to keep show momentum.</div>
+    </div>
+    <div class="date-card" onclick="selectDate(this)">
+      <div class="date-badge">Option</div>
+      <div class="date-main">Fri, July 24</div>
+      <div class="date-note">Five weeks out. Maximum flexibility for scheduling.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FORM -->
+<div class="form-section" id="register">
+  <div class="form-grid">
+    <div class="form-left">
+      <div class="section-eyebrow" style="margin-bottom:16px;">
+        <div class="section-eyebrow-line"></div>
+        <div class="section-eyebrow-text">Reserve your seat</div>
+      </div>
+      <div class="form-headline">Register<br>your interest</div>
+      <p class="form-subline">Seats are limited. Submit your details and our team will confirm your spot and send full logistics details the week before the visit.</p>
+      <div class="form-guarantee">
+        <div class="form-guarantee-item">
+          <div class="fg-icon"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <span>No cost — bus, tour, and Q&A are complimentary</span>
+        </div>
+        <div class="form-guarantee-item">
+          <div class="fg-icon"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <span>Same-day return — depart and arrive back in Houston</span>
+        </div>
+        <div class="form-guarantee-item">
+          <div class="fg-icon"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></div>
+          <span>Questions? Contact Ryan directly to discuss scheduling</span>
+        </div>
+      </div>
+      <div style="margin-top: 80px;">
+        <img src="Assets/State-Service-Logo-light.png" alt="State Service" style="height: 36px; width: auto; opacity: 0.6;">
+      </div>
+    </div>
+
+    <div class="form-right">
+      <div class="field-group">
+        <div class="field">
+          <label>First name</label>
+          <input type="text" placeholder="First">
+        </div>
+        <div class="field">
+          <label>Last name</label>
+          <input type="text" placeholder="Last">
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="field">
+          <label>Company</label>
+          <input type="text" placeholder="Company name">
+        </div>
+        <div class="field">
+          <label>Title / Role</label>
+          <input type="text" placeholder="Your role">
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="field full">
+          <label>Work email</label>
+          <input type="email" placeholder="you@company.com">
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="field full">
+          <label>Preferred visit date</label>
+          <select>
+            <option value="">Select a date</option>
+            <option value="june26">Friday, June 26</option>
+            <option value="july10">Friday, July 10</option>
+            <option value="july17">Friday, July 17</option>
+            <option value="july24">Friday, July 24</option>
+            <option value="any">Any date works</option>
+          </select>
+        </div>
+      </div>
+      <div class="field-group">
+        <div class="field full">
+          <label>What brings you to the yard? <span style="color:var(--muted);font-weight:400;">(optional)</span></label>
+          <textarea placeholder="Tell us about your project or what you'd like to see..."></textarea>
+        </div>
+      </div>
+      <button class="form-submit" onclick="handleSubmit(event)">Reserve My Spot →</button>
+      <p class="form-disclaimer">By submitting, you agree to be contacted by State Service regarding this event. We do not share your information with third parties.</p>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-map-bg"></div>
+  
+  <div class="footer-content">
+    <div class="footer-logo-placeholder">
+       <img src="Estate Services - Logo.png" alt="State Service Logo" style="max-height: 115px; width: auto; object-fit: contain;">
+    </div>
+    
+    <div class="footer-socials">
+      <a href="https://www.facebook.com/StateServiceTX/" target="_blank" rel="noopener noreferrer" class="social-icon">
+        <svg viewBox="0 0 320 512"><path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/company/state-service-company/posts/?feedView=all" target="_blank" rel="noopener noreferrer" class="social-icon linkedin">
+        <svg viewBox="0 0 448 512"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/></svg>
+      </a>
+      <a href="mailto:info@stateservice.com" class="social-icon">
+        <svg viewBox="0 0 512 512"><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48H48zM0 176V384c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V176L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg>
+      </a>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copyright">© 2026 State Service Inc. All Rights Reserved. Designed by <a href="https://allstreamep.com/" target="_blank" style="color: var(--gold); text-decoration: none;">Allstream Energy Partners</a>.</p>
+    </div>
+  </div>
+
+  <a href="#" class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">
+    <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </a>
+</footer>
+
+<script>
+function scrambleText(element, finalString, delay = 0) {
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*';
+  
+  element.textContent = '';
+  
+  setTimeout(() => {
+    let currentIndex = 0;
+    let decodeTicks = 0;
+    const interval = setInterval(() => {
+      if (currentIndex >= finalString.length) {
+        clearInterval(interval);
+        element.textContent = finalString;
+        return;
+      }
+      
+      if (decodeTicks > 2) {
+        currentIndex++;
+        decodeTicks = 0;
+      } else {
+        decodeTicks++;
+      }
+      
+      let currentStr = finalString.substring(0, currentIndex);
+      if (currentIndex < finalString.length) {
+        if (finalString[currentIndex] !== ' ') {
+          currentStr += chars[Math.floor(Math.random() * chars.length)];
+        } else {
+          currentStr += ' ';
+          decodeTicks = 3;
+        }
+      }
+      
+      element.textContent = currentStr;
+    }, 40);
+  }, delay);
+}
+
+// Intersection observer for stat counters and fade-ins
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      if (!entry.target.classList.contains('visible')) {
+        entry.target.classList.add('visible');
+        
+        // Count up animation for stat numbers
+        const numberEl = entry.target.querySelector('.stat-number');
+        if (numberEl) {
+          const originalText = numberEl.textContent;
+          const targetNum = parseInt(originalText.replace(/,/g, ''));
+          const suffix = originalText.includes('+') ? '+' : '';
+          const hasComma = originalText.includes(',');
+          
+          const duration = 2000;
+          const startTime = performance.now();
+          
+          function updateCounter(currentTime) {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const easeProgress = 1 - Math.pow(1 - progress, 4);
+            let currentNum = Math.floor(easeProgress * targetNum);
+            
+            let displayStr = currentNum.toString();
+            if (hasComma) displayStr = currentNum.toLocaleString();
+            
+            numberEl.textContent = displayStr + suffix;
+            
+            if (progress < 1) {
+              requestAnimationFrame(updateCounter);
+            } else {
+              numberEl.textContent = originalText;
+            }
+          }
+          requestAnimationFrame(updateCounter);
+        }
+      }
+    }
+  });
+}, { threshold: 0.15 });
+
+const busObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      if (!entry.target.classList.contains('visible')) {
+        entry.target.classList.add('visible');
+        
+        // Scramble animation for bus cities
+        const cities = entry.target.querySelectorAll('.bus-city');
+        cities.forEach((city, index) => {
+          const finalString = city.getAttribute('data-text');
+          const delay = index === 0 ? 0 : 1000;
+          if (finalString) scrambleText(city, finalString, delay);
+        });
+      }
+    }
+  });
+}, { threshold: 0.6 });
+
+document.querySelectorAll('.stat-item, .expect-item').forEach(el => observer.observe(el));
+document.querySelectorAll('.bus-card').forEach(el => busObserver.observe(el));
+
+// Stagger stat items
+document.querySelectorAll('.stat-item').forEach((el, i) => {
+  el.style.transitionDelay = `${i * 0.1}s`;
+});
+document.querySelectorAll('.expect-item').forEach((el, i) => {
+  el.style.transitionDelay = `${i * 0.12}s`;
+});
+
+// Date card selection
+function selectDate(card) {
+  document.querySelectorAll('.date-card').forEach(c => c.classList.remove('selected'));
+  card.classList.add('selected');
+  const dateText = card.querySelector('.date-main').textContent;
+  const select = document.querySelector('select');
+  const opts = { 'Fri, June 26': 'june26', 'Fri, July 10': 'july10', 'Fri, July 17': 'july17', 'Fri, July 24': 'july24' };
+  if (opts[dateText]) select.value = opts[dateText];
+}
+
+// Form submit
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target;
+  btn.textContent = '✓ Request received — we\'ll be in touch';
+  btn.style.background = '#1D9E75';
+  btn.style.color = '#fff';
+  btn.disabled = true;
+}
+
+// Smooth parallax on hero grid
+window.addEventListener('scroll', () => {
+  const scrolled = window.scrollY;
+  const hero = document.querySelector('.hero');
+  if (hero && scrolled < window.innerHeight) {
+    hero.style.backgroundPositionY = `${scrolled * 0.3}px`;
+  }
+});
+
+// Hero Background Slider
+function initHeroSlider() {
+  const slides = document.querySelectorAll('#heroSlider .hero-slide');
+  if (!slides.length) return;
+  let current = 0;
+  setInterval(() => {
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+  }, 6000); // 6 seconds per slide
+}
+initHeroSlider();
+
+// Form field focus animation
+const formObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      if (!entry.target.classList.contains('focus-animated')) {
+        entry.target.classList.add('focus-animated');
+        const fields = entry.target.querySelectorAll('.field input, .field select, .field textarea');
+        fields.forEach((field, index) => {
+          setTimeout(() => {
+            field.classList.add('simulated-focus');
+            setTimeout(() => {
+              field.classList.remove('simulated-focus');
+            }, 600); // Hold the highlight for 600ms
+          }, index * 400 + 500); // 500ms initial delay, 400ms interval between fields
+        });
+      }
+    }
+  });
+}, { threshold: 0.5 });
+
+const formSection = document.querySelector('.form-section');
+if (formSection) formObserver.observe(formSection);
+
+// Date card hover animation
+const datesObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      if (!entry.target.classList.contains('hover-animated')) {
+        entry.target.classList.add('hover-animated');
+        const cards = entry.target.querySelectorAll('.date-card');
+        cards.forEach((card, index) => {
+          setTimeout(() => {
+            card.classList.add('simulated-hover');
+            setTimeout(() => {
+              card.classList.remove('simulated-hover');
+            }, 600); // Hold hover for 600ms
+          }, index * 400 + 300); // 300ms initial delay, 400ms interval
+        });
+      }
+    }
+  });
+}, { threshold: 0.5 });
+
+const datesGrid = document.querySelector('.dates-grid');
+if (datesGrid) datesObserver.observe(datesGrid);
+</script>
+</body>
+</html>
